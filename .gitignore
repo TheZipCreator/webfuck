@@ -13,3 +13,4 @@ webfuck-test-*
 *.o
 *.obj
 *.lst
+*.pdb
