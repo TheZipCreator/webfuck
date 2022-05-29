@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/webfuck
+webfuck.so
+webfuck.dylib
+webfuck.dll
+webfuck.a
+webfuck.lib
+webfuck-test-*
+*.exe
+*.o
+*.obj
+*.lst

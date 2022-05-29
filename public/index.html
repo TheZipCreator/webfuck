@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <p>
+      Hello. I decided to spend this weekend implementing brainfuck as a CGI, because I have too much time on my hands.<br>
+      So, you can run normal brainfuck code, like this:<br><br>
+      <?bf
+        ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
+      ?>
+      <br><br>
+      In PHP the flow statements (if, while, etc.) can control which elements appear, and we can do that here too:<br><br>
+      <?bf
+        [-]++++++++++[
+      ?>
+        Hello
+      <?bf
+        -]
+      ?><br><br>
+      As you can see, that got duplicated 10 times, due to the brainfuck code surrounding it.<br>
+      However, there's also some new additions to brainfuck, specifically directives and comments.<br><br>
+      <?bf
+        ;this is a comment. They're started with a semicolon, and ended with a newline.
+        
+        ;the following is a directive, the "echo" directive, which just puts its contents onto the page
+        #echo "This is an echo directive!"
+        ;by default, all non-brainfuck code is already wrapped in an echo directive.
+      ?><br><br>
+      Echo isn't the only directive however, there's a few others, such as in<br><br>
+      <?bf
+        ;the in directive takes a file and adds it to stdin. If stdin is empty, the brainfuck ',' command puts -1 into the cell.
+        #in "lorem_ipsum.txt"
+        ;Cat program that terminates on -1
+        ,+[-.,+]
+      ?><br><br>
+      But what if you want to save data? Well, that's where the save directive comes into play.<br><br>
+      <?bf
+        >
+        ;load 65 (A)
+        ++++++
+        [
+          >++++++++++
+          <-
+        ]>+++++
+        ;move 65 to next 4 cells
+        [
+          >+>+>+>+
+          <<<<-
+        ]
+        ;change to ABCD
+        >.>+.>++.>+++.
+        ;save to data.bin
+        #save "data.bin"
+        ;now delete the data
+        [-]<[-]<[-]<[-]
+      ?><br><br>
+      So now we have our data saved in test.bin. Now how do we load it back out? That's what the load instruction does. It resets the head to 0 and loads a file from storage<br><br>
+      <?bf
+        ;load back our data.bin
+        #load "data.bin"
+        ;move back to our characters
+        >>>>>>>>>
+        ;and print them
+        .>.>.>.
+      ?><br><br>
+      So that's about all I have implemented so far. Source code is available at
+    </p>
+  </body>
+</html>

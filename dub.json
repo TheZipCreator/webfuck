@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"TheZipCreator"
+	],
+	"copyright": "Copyright © 2022, TheZipCreator",
+	"dependencies": {
+		"vibe-d": "~>0.9"
+	},
+	"description": "Web Server with BrainFuck as a server language",
+	"license": "GNU General Public License v3.0",
+	"name": "webfuck"
+}
